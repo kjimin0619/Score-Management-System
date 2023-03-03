@@ -3,8 +3,6 @@ import java.io.*;
 /*
 * 한 사람분의 성적 정보 저장.
 * 이름, 학번, 국어, 영어, 수학, 총점, 평균 정보
-*
-*
 * */
 
 public class ScoreDTO implements Serializable, Comparable <ScoreDTO> {
@@ -38,37 +36,13 @@ public class ScoreDTO implements Serializable, Comparable <ScoreDTO> {
     public double getAvg() {return this.avg;}
 
     @Override
-    public int compareTo(ScoreDTO O){
+    public int compareTo(ScoreDTO o){ // 총점 기준으로
         if (getTot() < o.getTot()) return -1;
-
+        else if(getTot() == o.getTot()) return 0;
+        else return 1;
     }
     @Override
     public String toString() {
-        return hak + "," + name + "," + kor + "," + eng + "," + math + "," + tot + "," + avg;
+        return sNumber + "," + name + "," + kor + "," + eng + "," + math + "," + tot + "," + avg;
     }
-    private ArrayList<ScoreDTO> allList; // 모든 학생들의 ScoreDTO를 담는 리스트
-
-    public static void save(ArrayList<ScoreDTO> studentList) throws IOException {
-        FileOutputStream fos = new FileOutputStream("저장할 파일명");
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-
-        oos.writeObject(allList);
-
-
-    }
-
-    // 파일 로딩
-    public static ArrayList<ScoreDTO> loading(ArrayList<ScoreDTO rallList> throws FileNotFoundException, IOException){
-        FileInputStream fis = new FileInputStream("파일명");
-        ObjectInputStream ois = new ObjectInputStream(fis);
-
-        allList = (ArrayList<ScoreDTO>)ois.readObject();
-
-        fis.close();
-        ois.close();
-
-
-
-    }
-    
 }
