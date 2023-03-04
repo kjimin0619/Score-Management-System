@@ -30,7 +30,7 @@ class ScoreForm extends JFrame implements ActionListener {
         bt1 = new JButton("입력");
         bt2 = new JButton("출력");
         bt3 = new JButton("학번검색");
-        bt4 = new JButton("순위");
+        bt4 = new JButton("정렬");
         bt5 = new JButton("삭제");
         bt6 = new JButton("파일저장");
         bt7 = new JButton("파일열기");
@@ -46,6 +46,7 @@ class ScoreForm extends JFrame implements ActionListener {
         head.add("학번");
         head.add("이름");
         head.add("국어");
+        head.add("영어");
         head.add("수학");
         head.add("총점");
         head.add("평균");
@@ -90,7 +91,7 @@ class ScoreForm extends JFrame implements ActionListener {
 
 
         // 윈도우 창 설정
-        setBounds(300, 500, 600, 300);
+        setBounds(300, 500, 700, 200);
         setVisible(true);
         // 버튼에 이벤트 설정
         for (int i = 0; i < allBtn.length; i++) {
@@ -108,7 +109,7 @@ class ScoreForm extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == bt1) { // 입력
-            JOptionPane.showConfirmDialog(ScoreForm.this, "정보를 입력합니다", "정도", JOptionPane.DEFAULT_OPTION, JOptionPane.DEFAULT_OPTION);
+            JOptionPane.showConfirmDialog(ScoreForm.this, "정보를 입력합니다", "정보", JOptionPane.DEFAULT_OPTION, JOptionPane.DEFAULT_OPTION);
             si.insert();
             for (int i = 0; i < allText.length; i++) {
                 allText[i].setText("");

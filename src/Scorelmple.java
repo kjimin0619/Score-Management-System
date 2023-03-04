@@ -29,34 +29,21 @@ class Scorelmple implements Score {
     }
     // 출력
     public DefaultTableModel outputModel(DefaultTableModel model) {
-        if (li.size() != 0) {
-            for (ScoreDTO data : li) {
-                Vector<Object> v = new Vector<Object>();
-                v.add(data.getsNumber());
-                v.add(data.getName());
-                v.add(data.getKor());
-                v.add(data.getEng());
-                v.add(data.getMath());
-                v.add(data.getTot());
-                v.add(data.getAvg());
-                model.addRow(v);
-            }
-        } else {
-            while (model.getRowCount() != 0) {
-                model.removeRow(0);
-            }
-            for (ScoreDTO data : allList) {
-                Vector<Object> v = new Vector<Object>();
-                v.add(data.getsNumber());
-                v.add(data.getName());
-                v.add(data.getKor());
-                v.add(data.getEng());
-                v.add(data.getMath());
-                v.add(data.getTot());
-                v.add(data.getAvg());
-                model.addRow(v);
-            }
+        while (model.getRowCount() != 0) { // 화면 비우기
+            model.removeRow(0);
         }
+        for (ScoreDTO data : allList) {
+            Vector<Object> v = new Vector<Object>();
+            v.add(data.getsNumber());
+            v.add(data.getName());
+            v.add(data.getKor());
+            v.add(data.getEng());
+            v.add(data.getMath());
+            v.add(data.getTot());
+            v.add(data.getAvg());
+            model.addRow(v);
+        }
+
         // 값 초기화
         while (li.size() != 0) {
             li.remove(0);
@@ -76,40 +63,26 @@ class Scorelmple implements Score {
         return searchModel;
     }
 
-    // 정렬(순위) sort
+    // 정렬(순위) sort 총점기준 오름차순
     @Override
     public DefaultTableModel to_desc(DefaultTableModel model) {
-        Collections.sort(allList);
-        if (li.size() != 0) {
-            for (ScoreDTO data : li) {
-                Vector<Object> v = new Vector<Object>();
-                v.add(data.getsNumber());
-                v.add(data.getName());
-                v.add(data.getKor());
-                v.add(data.getEng());
-                v.add(data.getMath());
-                v.add(data.getTot());
-                v.add(data.getAvg());
-                model.addRow(v);
-            }
-        } else {
-            while (model.getRowCount() != 0) {
+        Collections.sort(allList); // 정렬
+        while (model.getRowCount() != 0) { // 화면 비우기
                 model.removeRow(0);
             }
-            System.out.println(model.getRowCount());
-            for (ScoreDTO data : allList) {
-                Vector<Object> v = new Vector<Object>();
-                v.add(data.getsNumber());
-                v.add(data.getName());
-                v.add(data.getKor());
-                v.add(data.getEng());
-                v.add(data.getMath());
-                v.add(data.getTot());
-                v.add(data.getAvg());
-                model.addRow(v);
-            }
+        System.out.println(model.getRowCount());
+        for (ScoreDTO data : allList) {
+            Vector<Object> v = new Vector<Object>();
+            v.add(data.getsNumber());
+            v.add(data.getName());
+            v.add(data.getKor());
+            v.add(data.getEng());
+            v.add(data.getMath());
+            v.add(data.getTot());
+            v.add(data.getAvg());
+            model.addRow(v);
         }
-        // 값 초기화
+//      값 초기화
         while (li.size() != 0) {
             li.remove(0);
         }
