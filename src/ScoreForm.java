@@ -8,7 +8,6 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.JTable;
-import java.util.ArrayLsit;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,7 +24,7 @@ class ScoreForm extends JFrame implements ActionListener {
     private Scorelmple si;
 
     public ScoreForm() {
-        si = new ScoreImple(this);
+        si = new Scorelmple(this);
         // 하단 버튼 생성
         JPanel bottom = new JPanel(new GridLayout(1, 5, 0, 0));
         bt1 = new JButton("입력");
@@ -106,10 +105,9 @@ class ScoreForm extends JFrame implements ActionListener {
         });
     }
 
-    @override
+    @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == bt1) {
-            // 입력
+        if (e.getSource() == bt1) { // 입력
             JOptionPane.showConfirmDialog(ScoreForm.this, "정보를 입력합니다", "정도", JOptionPane.DEFAULT_OPTION, JOptionPane.DEFAULT_OPTION);
             si.insert();
             for (int i = 0; i < allText.length; i++) {
@@ -120,7 +118,7 @@ class ScoreForm extends JFrame implements ActionListener {
         } else if (e.getSource() == bt3) { // 학번 검색
             String answer = JOptionPane.showInputDialog(this, "학번을 입력하세요");
             if (answer != null) model = si.search(answer, model);
-        } else if (e.getSource() == bt4) { // 검색
+        } else if (e.getSource() == bt4) { // 정렬
             model = si.to_desc(model);
         } else if (e.getSource() == bt5) { // 삭제
             String answer = JOptionPane.showInputDialog(this, "삭제할 학번을 입력하세요");
